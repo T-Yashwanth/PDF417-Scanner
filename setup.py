@@ -4,9 +4,8 @@ setup(
     name="PDF417_Scanner",
     version="0.1",
     author="Yash",
-    description="This project was created by me from scratch",
+    description="this is the version 0.1 that has flask api and front end for only image scanning and returning the data",
     url="https://github.com/T-Yashwanth/PDF417-Scanner",
     packages=find_packages(),
-    packages=find_packages(where="src"),
     package_dir={"": "src"},
 )
