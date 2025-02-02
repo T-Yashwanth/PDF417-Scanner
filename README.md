@@ -1,6 +1,11 @@
 
 Install java in your system
 
+Deactivate base version if you have one
+```bash
+conda deactivate
+```
+
 Create Virtual Environment
 ```bash
 python -m venv PDF415_scanner
