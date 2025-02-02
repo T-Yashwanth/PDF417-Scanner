@@ -26,8 +26,5 @@ pip install -r requirements.txt
 ```
 
 ```bash
-```
-
-```bash
 streamlit run barcode_frontend.py
 ```
