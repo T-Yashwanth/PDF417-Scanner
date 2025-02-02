@@ -28,7 +28,7 @@ class BarcodeScanner:
             barcode = self.reader.decode(image_path)
             if barcode and barcode.parsed:
                 # Log successful extraction and parsing of barcode data
-                logger.info("Barcode data found and parsed.")
+                logger.info("Barcode data found and parsed.%s", barcode.parsed)
                 return barcode.parsed
             else:
                 # Log if no barcode was found in the image
@@ -77,7 +77,7 @@ class DriverLicenseParser:
 
             # Join the processed lines into a single string with newline separators
             result = "\n".join(output_lines)
-            logger.info("Driver's license data parsed successfully.")
+            logger.info("Driver's license data parsed successfully. %s", result)
             return result
 
         except Exception as e:

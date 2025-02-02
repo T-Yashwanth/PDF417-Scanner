@@ -39,7 +39,7 @@ def main():
                     if barcode_data:
                         # Parse the driver's license data if barcode scanning was successful
                         parsed_result = DriverLicenseParser().parse_data(barcode_data)
-                        st.markdown(parsed_result)
+                        st.markdown(parsed_result.replace("\n", "<br>"), unsafe_allow_html=True)
                     else:
                         st.error("No barcode found or barcode could not be parsed.")
                 except Exception as e:

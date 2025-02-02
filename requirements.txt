@@ -1,3 +1,6 @@
 streamlit
 zxing
+fastapi
+python-multipart
+flask
 -e .
