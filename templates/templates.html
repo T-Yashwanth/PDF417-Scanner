@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Driver's License Barcode Scanner</title>
+  </head>
+  <body>
+    {% if template == 'upload_form' %}
+    <h1>Upload an Image to Scan</h1>
+    <form action="{{ url_for('scan_driver_license') }}" method="post" enctype="multipart/form-data">
+      <label>Select an image containing the PDF417 barcode:
+        <input type="file" name="file" accept="image/*" required>
+      </label>
+      <button type="submit">Scan Barcode</button>
+    </form>
+    <br>
+    <a href="{{ url_for('upload_video') }}">Or scan a video instead</a>
+
+    {% elif template == 'video_upload_form' %}
+    <h1>Upload a Video to Scan</h1>
+    <form action="{{ url_for('scan_driver_license_video') }}" method="post" enctype="multipart/form-data">
+      <label>Select a video file containing the PDF417 barcode:
+        <input type="file" name="file" accept="video/*" required>
+      </label>
+      <button type="submit">Scan Barcode</button>
+    </form>
+    <br>
+    <a href="{{ url_for('index') }}">Back to Image Scanner</a>
+
+    {% elif template == 'result' %}
+    <h1>Scan Results</h1>
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% else %}
+    <p style="color:green;">{{ message }}</p>
+    <pre>{{ parsed_data }}</pre>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Go Back</a>
+    {% endif %}
+
+    <!-- JavaScript for UI Enhancements -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const forms = document.querySelectorAll("form");
+        forms.forEach(form => {
+          form.addEventListener("submit", function(event) {
+            const fileInput = form.querySelector("input[type='file']");
+            if (fileInput.files.length === 0) {
+              alert("Please select a file before submitting.");
+              event.preventDefault();
+            }
+          });
+        });
+
+        // Add a loading spinner when a form is submitted
+        forms.forEach(form => {
+          form.addEventListener("submit", function() {
+            const submitButton = form.querySelector("button[type='submit']");
+            if (submitButton) {
+              submitButton.disabled = true;
+              submitButton.innerHTML = "Scanning...";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

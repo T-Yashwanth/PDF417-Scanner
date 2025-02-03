@@ -3,4 +3,5 @@ zxing
 fastapi
 python-multipart
 flask
+opencv-python
 -e .
